@@ -6,6 +6,8 @@ import http from 'http';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+const PORT = parseInt(process.env.APOLLO_PORT ?? '4000')
+
 // The GraphQL schema
 const typeDefs = `#graphql
   type Query {
@@ -37,6 +39,6 @@ app.use(
   expressMiddleware(server),
 );
 
-const { address } = await httpServer.listen({ port: 4000 })
+const { address } = await httpServer.listen({ port: PORT })
 
-console.log(`🚀 Server ready at http://localhost:4000`);
+console.log(`🚀 Server ready at http://localhost:${PORT}`);
